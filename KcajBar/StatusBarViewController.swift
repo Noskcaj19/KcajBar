@@ -15,6 +15,7 @@ class StatusBarViewController : NSViewController {
 	var background = BackgroundViewController()
 	var time = TimeViewController()
 	var date = DateViewController()
+	var battery = BatterViewController()
 
 	init(with screen: NSScreen) {
 		self.screen = screen
@@ -50,6 +51,12 @@ class StatusBarViewController : NSViewController {
 		date.snp.makeConstraints { (make) -> Void in
 			make.top.equalTo(0)
 			make.right.equalTo(-60)
+		}
+
+		self.view.addSubview(battery)
+		battery.snp.makeConstraints { (make) -> Void in
+			make.top.equalTo(0)
+			make.right.equalTo(-144)
 		}
 	}
 }
