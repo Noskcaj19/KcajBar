@@ -9,8 +9,14 @@
 /* Begin PBXBuildFile section */
 		04ADB5FD203E25DE00F33847 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADB5FC203E25DE00F33847 /* AppDelegate.swift */; };
 		04ADB5FF203E25DE00F33847 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04ADB5FE203E25DE00F33847 /* Assets.xcassets */; };
-		04ADB602203E25DE00F33847 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04ADB600203E25DE00F33847 /* MainMenu.xib */; };
 		04ADB60E203E25DE00F33847 /* KcajBarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADB60D203E25DE00F33847 /* KcajBarUITests.swift */; };
+		04ADB619203E260900F33847 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADB618203E260900F33847 /* main.swift */; };
+		04ADB61B203E262F00F33847 /* StatusBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADB61A203E262F00F33847 /* StatusBarViewController.swift */; };
+		04E12154203E61EA00BFAD2B /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E12153203E61EA00BFAD2B /* TimeViewController.swift */; };
+		04E12156203E635200BFAD2B /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E12155203E635200BFAD2B /* DateViewController.swift */; };
+		04E12158203E63BA00BFAD2B /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E12157203E63BA00BFAD2B /* BackgroundViewController.swift */; };
+		04E1215A203E66C700BFAD2B /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E12159203E66C700BFAD2B /* SnapKit.framework */; };
+		04E1215B203E66C700BFAD2B /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04E12159203E66C700BFAD2B /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,16 +29,35 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		04AC81AB203E3D1B008234CE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				04E1215B203E66C700BFAD2B /* SnapKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		04ADB5F9203E25DE00F33847 /* KcajBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KcajBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04ADB5FC203E25DE00F33847 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04ADB5FE203E25DE00F33847 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		04ADB601203E25DE00F33847 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		04ADB603203E25DE00F33847 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04ADB604203E25DE00F33847 /* KcajBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KcajBar.entitlements; sourceTree = "<group>"; };
 		04ADB609203E25DE00F33847 /* KcajBarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KcajBarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04ADB60D203E25DE00F33847 /* KcajBarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KcajBarUITests.swift; sourceTree = "<group>"; };
 		04ADB60F203E25DE00F33847 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04ADB618203E260900F33847 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		04ADB61A203E262F00F33847 /* StatusBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarViewController.swift; sourceTree = "<group>"; };
+		04E12153203E61EA00BFAD2B /* TimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
+		04E12155203E635200BFAD2B /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
+		04E12157203E63BA00BFAD2B /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
+		04E12159203E66C700BFAD2B /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/Mac/SnapKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04E1215A203E66C700BFAD2B /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +85,7 @@
 				04ADB5FB203E25DE00F33847 /* KcajBar */,
 				04ADB60C203E25DE00F33847 /* KcajBarUITests */,
 				04ADB5FA203E25DE00F33847 /* Products */,
+				04ADB61C203E2CEE00F33847 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,9 +103,13 @@
 			children = (
 				04ADB5FC203E25DE00F33847 /* AppDelegate.swift */,
 				04ADB5FE203E25DE00F33847 /* Assets.xcassets */,
-				04ADB600203E25DE00F33847 /* MainMenu.xib */,
 				04ADB603203E25DE00F33847 /* Info.plist */,
 				04ADB604203E25DE00F33847 /* KcajBar.entitlements */,
+				04ADB618203E260900F33847 /* main.swift */,
+				04ADB61A203E262F00F33847 /* StatusBarViewController.swift */,
+				04E12153203E61EA00BFAD2B /* TimeViewController.swift */,
+				04E12155203E635200BFAD2B /* DateViewController.swift */,
+				04E12157203E63BA00BFAD2B /* BackgroundViewController.swift */,
 			);
 			path = KcajBar;
 			sourceTree = "<group>";
@@ -92,6 +123,14 @@
 			path = KcajBarUITests;
 			sourceTree = "<group>";
 		};
+		04ADB61C203E2CEE00F33847 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				04E12159203E66C700BFAD2B /* SnapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -102,6 +141,7 @@
 				04ADB5F5203E25DE00F33847 /* Sources */,
 				04ADB5F6203E25DE00F33847 /* Frameworks */,
 				04ADB5F7203E25DE00F33847 /* Resources */,
+				04AC81AB203E3D1B008234CE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -176,7 +216,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				04ADB5FF203E25DE00F33847 /* Assets.xcassets in Resources */,
-				04ADB602203E25DE00F33847 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +233,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04E12158203E63BA00BFAD2B /* BackgroundViewController.swift in Sources */,
+				04E12156203E635200BFAD2B /* DateViewController.swift in Sources */,
+				04ADB61B203E262F00F33847 /* StatusBarViewController.swift in Sources */,
+				04E12154203E61EA00BFAD2B /* TimeViewController.swift in Sources */,
+				04ADB619203E260900F33847 /* main.swift in Sources */,
 				04ADB5FD203E25DE00F33847 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,17 +259,6 @@
 			targetProxy = 04ADB60A203E25DE00F33847 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		04ADB600203E25DE00F33847 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				04ADB601203E25DE00F33847 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		04ADB610203E25DE00F33847 /* Debug */ = {
@@ -342,6 +375,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = ZYYZRU8YFX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = KcajBar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Noskcaj.KcajBar;
@@ -358,6 +396,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = ZYYZRU8YFX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = KcajBar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Noskcaj.KcajBar;

@@ -8,20 +8,33 @@
 
 import Cocoa
 
-@NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-	@IBOutlet weak var window: NSWindow!
-
+	var newWindow: NSWindow?
+	var controller: StatusBarViewController?
 
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
-		// Insert code here to initialize your application
+		guard let screen = NSScreen.main else {
+			return
+		}
+		newWindow = NSWindow(contentRect: screen.frame, styleMask: .borderless, backing: .buffered, defer: false)
+
+		newWindow?.backgroundColor = .clear
+		newWindow?.isOpaque = false
+//		newWindow?.level = .statusBar
+		newWindow?.collectionBehavior = [.transient, .canJoinAllSpaces, .ignoresCycle]
+		newWindow?.isRestorable = false
+		newWindow?.disableSnapshotRestoration()
+		newWindow?.displaysWhenScreenProfileChanges = true
+		newWindow?.isReleasedWhenClosed = false
+		newWindow?.ignoresMouseEvents = true
+
+		controller = StatusBarViewController(with: screen)
+
+		let content = newWindow!.contentView! as NSView
+
+		let view = controller!.view
+		content.addSubview(view)
+
+		newWindow!.makeKeyAndOrderFront(nil)
 	}
-
-	func applicationWillTerminate(_ aNotification: Notification) {
-		// Insert code here to tear down your application
-	}
-
-
 }
-
