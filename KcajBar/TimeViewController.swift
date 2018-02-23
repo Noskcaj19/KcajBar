@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class TimeViewController : NSTextField {
+class TimeViewController : NSTextField, Component {
 	override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
 		self.stringValue = getTime()
@@ -35,5 +35,13 @@ class TimeViewController : NSTextField {
 		let hour = calendar.component(.hour, from: date)
 		let minute = calendar.component(.minute, from: date)
 		return "\(hour):\(String(format: "%02d", minute))"
+	}
+
+	func layout(with view: NSView) {
+		view.addSubview(self)
+		self.snp.makeConstraints { (make) -> Void in
+			make.top.equalTo(0)
+			make.right.equalTo(-10)
+		}
 	}
 }

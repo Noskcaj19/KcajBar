@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0409600C2040B4FA009F3B67 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409600B2040B4FA009F3B67 /* Component.swift */; };
 		04ADB5FD203E25DE00F33847 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADB5FC203E25DE00F33847 /* AppDelegate.swift */; };
 		04ADB5FF203E25DE00F33847 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04ADB5FE203E25DE00F33847 /* Assets.xcassets */; };
 		04ADB60E203E25DE00F33847 /* KcajBarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADB60D203E25DE00F33847 /* KcajBarUITests.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0409600B2040B4FA009F3B67 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		04ADB5F9203E25DE00F33847 /* KcajBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KcajBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04ADB5FC203E25DE00F33847 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04ADB5FE203E25DE00F33847 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				04E12155203E635200BFAD2B /* DateViewController.swift */,
 				04E12157203E63BA00BFAD2B /* BackgroundViewController.swift */,
 				04E1215C203E711000BFAD2B /* BatteryViewController.swift */,
+				0409600B2040B4FA009F3B67 /* Component.swift */,
 			);
 			path = KcajBar;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				04ADB61B203E262F00F33847 /* StatusBarViewController.swift in Sources */,
 				04E1215D203E711000BFAD2B /* BatteryViewController.swift in Sources */,
 				04E12154203E61EA00BFAD2B /* TimeViewController.swift in Sources */,
+				0409600C2040B4FA009F3B67 /* Component.swift in Sources */,
 				04ADB619203E260900F33847 /* main.swift in Sources */,
 				04ADB5FD203E25DE00F33847 /* AppDelegate.swift in Sources */,
 			);

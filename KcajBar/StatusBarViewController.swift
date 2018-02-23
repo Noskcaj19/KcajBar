@@ -12,10 +12,12 @@ import SnapKit
 class StatusBarViewController : NSViewController {
 	var screen: NSScreen
 
-	var background = BackgroundViewController()
-	var time = TimeViewController()
-	var date = DateViewController()
-	var battery = BatterViewController()
+	var components: [Component] = [
+		BackgroundViewController(),
+		TimeViewController(),
+		DateViewController(),
+		BatterViewController()
+	]
 
 	init(with screen: NSScreen) {
 		self.screen = screen
@@ -35,28 +37,8 @@ class StatusBarViewController : NSViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		self.view.addSubview(background)
-		background.snp.makeConstraints { (make) -> Void in
-			make.height.equalTo(20)
-			make.width.left.right.top.equalTo(self.view)
-		}
-
-		self.view.addSubview(time)
-		time.snp.makeConstraints { (make) -> Void in
-			make.top.equalTo(0)
-			make.right.equalTo(-10)
-		}
-
-		self.view.addSubview(date)
-		date.snp.makeConstraints { (make) -> Void in
-			make.top.equalTo(0)
-			make.right.equalTo(-60)
-		}
-
-		self.view.addSubview(battery)
-		battery.snp.makeConstraints { (make) -> Void in
-			make.top.equalTo(0)
-			make.right.equalTo(-144)
+		components.forEach { component in
+			component.layout(with: self.view)
 		}
 	}
 }

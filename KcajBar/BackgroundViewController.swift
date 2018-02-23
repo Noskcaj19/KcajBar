@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class BackgroundViewController : NSView {
+class BackgroundViewController : NSView, Component {
 	override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
 		self.wantsLayer = true
@@ -17,5 +17,13 @@ class BackgroundViewController : NSView {
 
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
+	}
+
+	func layout(with view: NSView) {
+		view.addSubview(self)
+		self.snp.makeConstraints { (make) -> Void in
+			make.height.equalTo(20)
+			make.width.left.right.top.equalTo(view)
+		}
 	}
 }

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class DateViewController : NSTextField {
+class DateViewController : NSTextField, Component {
 	override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
 		self.stringValue = getDate()
@@ -33,5 +33,13 @@ class DateViewController : NSTextField {
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateFormat = "EEE dd MMM"
 		return dateFormatter.string(from: date)
+	}
+
+	func layout(with view: NSView) {
+		view.addSubview(self)
+		self.snp.makeConstraints { (make) -> Void in
+			make.top.equalTo(0)
+			make.right.equalTo(-60)
+		}
 	}
 }

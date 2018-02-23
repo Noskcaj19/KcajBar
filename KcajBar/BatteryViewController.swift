@@ -14,7 +14,7 @@ import IOKit.ps
 
 import Cocoa
 
-class BatterViewController : NSTextField {
+class BatterViewController : NSTextField, Component {
 	override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
 		self.stringValue = getCapacity()
@@ -41,6 +41,14 @@ class BatterViewController : NSTextField {
 			return String(capacity) + "%"
 		} else {
 			return "ERR"
+		}
+	}
+
+	func layout(with view: NSView) {
+		view.addSubview(self)
+		self.snp.makeConstraints { (make) -> Void in
+			make.top.equalTo(0)
+			make.right.equalTo(-144)
 		}
 	}
 }
