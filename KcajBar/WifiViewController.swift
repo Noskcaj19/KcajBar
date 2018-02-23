@@ -1,27 +1,26 @@
 //
-//  BatteryViewController.swift
+//  WifiViewController.swift
 //  KcajBar
 //
-//  Created by Jack Nunley on 2/21/18.
+//  Created by Jack Nunley on 2/23/18.
 //  Copyright © 2018 Noskcaj. All rights reserved.
 //
 
 import Cocoa
-import IOKit.ps
 
-class BatteryViewController : NSTextField, Component {
+class WifiViewController : NSTextField, Component {
 	override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
-		self.stringValue = getCapacity()
+		(self.stringValue, self.toolTip) = getWifi()
 		self.font = NSFont(name: "Hack", size: 12)
-		self.textColor = NSColor(red: 0.71, green: 0.54, blue: 0.00, alpha: 1.0)
+		self.textColor = NSColor(red: 0.52, green: 0.60, blue: 0.00, alpha: 1.0)
 		self.backgroundColor = .clear
 		self.isBezeled = false
 		self.drawsBackground = false
 		self.isSelectable = false
 		self.isEditable = false
 		Timer.scheduledTimer(withTimeInterval: 60*2, repeats: true) { _ in
-			self.stringValue = self.getCapacity()
+			(self.stringValue, self.toolTip) = self.getWifi()
 		}
 	}
 
@@ -29,13 +28,12 @@ class BatteryViewController : NSTextField, Component {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	func getCapacity() -> String {
-		let psInfo = IOPSCopyPowerSourcesInfo().takeRetainedValue()
-		let psInfoArray = (psInfo as! [[String: Any]])[0]
-		if let capacity = psInfoArray["Current Capacity"] as? Int {
-			return String(capacity) + "%"
-		} else {
-			return "ERR"
+	func getWifi() -> (String, String?) {
+		switch wifiStatus() {
+		case let .on(networkName):
+			return ("On", networkName)
+		case let .off:
+			return ("Off", nil)
 		}
 	}
 
@@ -43,7 +41,8 @@ class BatteryViewController : NSTextField, Component {
 		view.addSubview(self)
 		self.snp.makeConstraints { (make) -> Void in
 			make.top.equalTo(0)
-			make.right.equalTo(-144)
+			make.right.equalTo(-180)
 		}
 	}
 }
+

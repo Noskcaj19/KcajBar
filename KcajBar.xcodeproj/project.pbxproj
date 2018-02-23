@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0409600C2040B4FA009F3B67 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409600B2040B4FA009F3B67 /* Component.swift */; };
+		0409600F2040B983009F3B67 /* Wifi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409600E2040B983009F3B67 /* Wifi.swift */; };
+		040960112040BBCF009F3B67 /* WifiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040960102040BBCF009F3B67 /* WifiViewController.swift */; };
 		04ADB5FD203E25DE00F33847 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADB5FC203E25DE00F33847 /* AppDelegate.swift */; };
 		04ADB5FF203E25DE00F33847 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04ADB5FE203E25DE00F33847 /* Assets.xcassets */; };
 		04ADB60E203E25DE00F33847 /* KcajBarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADB60D203E25DE00F33847 /* KcajBarUITests.swift */; };
@@ -47,6 +49,8 @@
 
 /* Begin PBXFileReference section */
 		0409600B2040B4FA009F3B67 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
+		0409600E2040B983009F3B67 /* Wifi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wifi.swift; sourceTree = "<group>"; };
+		040960102040BBCF009F3B67 /* WifiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiViewController.swift; sourceTree = "<group>"; };
 		04ADB5F9203E25DE00F33847 /* KcajBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KcajBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04ADB5FC203E25DE00F33847 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04ADB5FE203E25DE00F33847 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -83,6 +87,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0409600D2040B975009F3B67 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				0409600B2040B4FA009F3B67 /* Component.swift */,
+				0409600E2040B983009F3B67 /* Wifi.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		04ADB5F0203E25DE00F33847 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +118,7 @@
 		04ADB5FB203E25DE00F33847 /* KcajBar */ = {
 			isa = PBXGroup;
 			children = (
+				0409600D2040B975009F3B67 /* Utilities */,
 				04ADB5FC203E25DE00F33847 /* AppDelegate.swift */,
 				04ADB5FE203E25DE00F33847 /* Assets.xcassets */,
 				04ADB603203E25DE00F33847 /* Info.plist */,
@@ -115,7 +129,7 @@
 				04E12155203E635200BFAD2B /* DateViewController.swift */,
 				04E12157203E63BA00BFAD2B /* BackgroundViewController.swift */,
 				04E1215C203E711000BFAD2B /* BatteryViewController.swift */,
-				0409600B2040B4FA009F3B67 /* Component.swift */,
+				040960102040BBCF009F3B67 /* WifiViewController.swift */,
 			);
 			path = KcajBar;
 			sourceTree = "<group>";
@@ -241,12 +255,14 @@
 			files = (
 				04E12158203E63BA00BFAD2B /* BackgroundViewController.swift in Sources */,
 				04E12156203E635200BFAD2B /* DateViewController.swift in Sources */,
+				0409600F2040B983009F3B67 /* Wifi.swift in Sources */,
 				04ADB61B203E262F00F33847 /* StatusBarViewController.swift in Sources */,
 				04E1215D203E711000BFAD2B /* BatteryViewController.swift in Sources */,
 				04E12154203E61EA00BFAD2B /* TimeViewController.swift in Sources */,
 				0409600C2040B4FA009F3B67 /* Component.swift in Sources */,
 				04ADB619203E260900F33847 /* main.swift in Sources */,
 				04ADB5FD203E25DE00F33847 /* AppDelegate.swift in Sources */,
+				040960112040BBCF009F3B67 /* WifiViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

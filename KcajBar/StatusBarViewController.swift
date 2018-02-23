@@ -16,7 +16,8 @@ class StatusBarViewController : NSViewController {
 		BackgroundViewController(),
 		TimeViewController(),
 		DateViewController(),
-		BatterViewController()
+		BatteryViewController(),
+		WifiViewController()
 	]
 
 	init(with screen: NSScreen) {
