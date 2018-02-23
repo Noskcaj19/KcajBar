@@ -35,8 +35,7 @@ class DateViewController : NSTextField, Component {
 		return dateFormatter.string(from: date)
 	}
 
-	func layout(with view: NSView) {
-		view.addSubview(self)
+	func layoutComponent() {
 		self.snp.makeConstraints { (make) -> Void in
 			make.top.equalTo(0)
 			make.right.equalTo(-60)

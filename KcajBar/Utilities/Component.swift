@@ -9,5 +9,5 @@
 import Cocoa
 
 protocol Component {
-	func layout(with view: NSView);
+	func layoutComponent();
 }

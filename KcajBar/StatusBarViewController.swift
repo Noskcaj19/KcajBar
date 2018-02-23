@@ -39,7 +39,11 @@ class StatusBarViewController : NSViewController {
 		super.viewDidLoad()
 
 		components.forEach { component in
-			component.layout(with: self.view)
+			self.view.addSubview(component as! NSView)
+		}
+
+		components.forEach { component in
+			component.layoutComponent()
 		}
 	}
 }

@@ -31,14 +31,13 @@ class WifiViewController : NSTextField, Component {
 	func getWifi() -> (String, String?) {
 		switch wifiStatus() {
 		case let .on(networkName):
-			return ("On", networkName)
+			return ("on", networkName)
 		case .off:
-			return ("Off", nil)
+			return ("off", nil)
 		}
 	}
 
-	func layout(with view: NSView) {
-		view.addSubview(self)
+	func layoutComponent() {
 		self.snp.makeConstraints { (make) -> Void in
 			make.top.equalTo(0)
 			make.right.equalTo(-180)
