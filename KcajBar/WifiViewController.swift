@@ -32,7 +32,7 @@ class WifiViewController : NSTextField, Component {
 		switch wifiStatus() {
 		case let .on(networkName):
 			return ("On", networkName)
-		case let .off:
+		case .off:
 			return ("Off", nil)
 		}
 	}
