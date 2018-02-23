@@ -1,0 +1,59 @@
+//
+//  SpotifyViewController.swift
+//  KcajBar
+//
+//  Created by Jack Nunley on 2/23/18.
+//  Copyright © 2018 Noskcaj. All rights reserved.
+//
+
+import Cocoa
+
+class SpotifyViewController : NSTextField, Component {
+	override init(frame frameRect: NSRect) {
+		super.init(frame: frameRect)
+		self.stringValue = getSpotify()
+		self.font = NSFont(name: "Hack", size: 12)
+		self.textColor = NSColor(red: 0.52, green: 0.60, blue: 0.00, alpha: 1.0)
+		self.backgroundColor = .clear
+		self.isBezeled = false
+		self.drawsBackground = false
+		self.isSelectable = false
+		self.isEditable = false
+		Timer.scheduledTimer(withTimeInterval: 45, repeats: true) { _ in
+			self.stringValue = self.getSpotify()
+		}
+	}
+
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+
+	func getSpotify() -> String {
+		let trackScript = """
+if application "Spotify" is running then
+	tell application "Spotify"
+		return name of current track as string
+	end tell
+end if
+"""
+		var error: NSDictionary?
+		if let scriptObject = NSAppleScript(source: trackScript) {
+			let output = scriptObject.executeAndReturnError(&error)
+			if error == nil {
+				return output.stringValue ?? ""
+			} else {
+				print("error: \(String(describing: error))")
+			}
+		}
+		return ""
+	}
+
+	func layoutComponent() {
+		self.snp.makeConstraints { (make) -> Void in
+			make.top.equalTo(0)
+			make.right.equalTo(-205)
+		}
+	}
+}
+
+

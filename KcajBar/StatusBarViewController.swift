@@ -17,7 +17,8 @@ class StatusBarViewController : NSViewController {
 		TimeViewController(),
 		DateViewController(),
 		BatteryViewController(),
-		WifiViewController()
+		WifiViewController(),
+		SpotifyViewController()
 	]
 
 	init(with screen: NSScreen) {

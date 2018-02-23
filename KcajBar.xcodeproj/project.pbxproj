@@ -11,6 +11,7 @@
 		0409600F2040B983009F3B67 /* Wifi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409600E2040B983009F3B67 /* Wifi.swift */; };
 		040960112040BBCF009F3B67 /* WifiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040960102040BBCF009F3B67 /* WifiViewController.swift */; };
 		040960132040C7C2009F3B67 /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040960122040C7C2009F3B67 /* Shell.swift */; };
+		040960152040C7FA009F3B67 /* SpotifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040960142040C7FA009F3B67 /* SpotifyViewController.swift */; };
 		04ADB5FD203E25DE00F33847 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADB5FC203E25DE00F33847 /* AppDelegate.swift */; };
 		04ADB5FF203E25DE00F33847 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04ADB5FE203E25DE00F33847 /* Assets.xcassets */; };
 		04ADB60E203E25DE00F33847 /* KcajBarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADB60D203E25DE00F33847 /* KcajBarUITests.swift */; };
@@ -53,6 +54,7 @@
 		0409600E2040B983009F3B67 /* Wifi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wifi.swift; sourceTree = "<group>"; };
 		040960102040BBCF009F3B67 /* WifiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiViewController.swift; sourceTree = "<group>"; };
 		040960122040C7C2009F3B67 /* Shell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shell.swift; sourceTree = "<group>"; };
+		040960142040C7FA009F3B67 /* SpotifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyViewController.swift; sourceTree = "<group>"; };
 		04ADB5F9203E25DE00F33847 /* KcajBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KcajBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04ADB5FC203E25DE00F33847 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04ADB5FE203E25DE00F33847 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				04E12157203E63BA00BFAD2B /* BackgroundViewController.swift */,
 				04E1215C203E711000BFAD2B /* BatteryViewController.swift */,
 				040960102040BBCF009F3B67 /* WifiViewController.swift */,
+				040960142040C7FA009F3B67 /* SpotifyViewController.swift */,
 			);
 			path = KcajBar;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				04ADB619203E260900F33847 /* main.swift in Sources */,
 				04ADB5FD203E25DE00F33847 /* AppDelegate.swift in Sources */,
 				040960112040BBCF009F3B67 /* WifiViewController.swift in Sources */,
+				040960152040C7FA009F3B67 /* SpotifyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
