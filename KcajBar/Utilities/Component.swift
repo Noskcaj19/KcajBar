@@ -8,6 +8,4 @@
 
 import Cocoa
 
-protocol Component {
-	func layoutComponent();
-}
+protocol Component {}

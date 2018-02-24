@@ -18,11 +18,4 @@ class BackgroundViewController : NSView, Component {
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-
-	func layoutComponent() {
-		self.snp.makeConstraints { (make) -> Void in
-			make.height.equalTo(20)
-			make.width.left.right.top.equalToSuperview()
-		}
-	}
 }

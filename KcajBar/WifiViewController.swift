@@ -36,12 +36,5 @@ class WifiViewController : NSTextField, Component {
 			return ("off", nil)
 		}
 	}
-
-	func layoutComponent() {
-		self.snp.makeConstraints { (make) -> Void in
-			make.top.equalTo(0)
-			make.right.equalTo(-180)
-		}
-	}
 }
 

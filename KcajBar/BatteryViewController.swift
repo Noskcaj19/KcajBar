@@ -38,11 +38,4 @@ class BatteryViewController : NSTextField, Component {
 			return "ERR"
 		}
 	}
-
-	func layoutComponent() {
-		self.snp.makeConstraints { (make) -> Void in
-			make.top.equalTo(0)
-			make.right.equalTo(-144)
-		}
-	}
 }

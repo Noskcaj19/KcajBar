@@ -36,11 +36,4 @@ class TimeViewController : NSTextField, Component {
 		let minute = calendar.component(.minute, from: date)
 		return "\(hour):\(String(format: "%02d", minute))"
 	}
-
-	func layoutComponent() {
-		self.snp.makeConstraints { (make) -> Void in
-			make.top.equalTo(0)
-			make.right.equalTo(-10)
-		}
-	}
 }

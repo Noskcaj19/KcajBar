@@ -12,13 +12,21 @@ import SnapKit
 class StatusBarViewController : NSViewController {
 	var screen: NSScreen
 
-	var components: [Component] = [
-		BackgroundViewController(),
+	var backgroundVC = BackgroundViewController()
+
+	var leftStack = NSStackView()
+	var rightStack = NSStackView()
+
+	var rightComponents: [Component] = [
 		TimeViewController(),
 		DateViewController(),
 		BatteryViewController(),
 		WifiViewController(),
 		SpotifyViewController()
+	]
+
+	var leftComponents: [Component] = [
+
 	]
 
 	init(with screen: NSScreen) {
@@ -34,17 +42,38 @@ class StatusBarViewController : NSViewController {
 		let view = NSView(frame: screen.frame)
 		view.wantsLayer = true
 		self.view = view
+
+		view.addSubview(backgroundVC)
+
+		rightStack.edgeInsets = NSEdgeInsetsMake(0, 5, 0, 5)
+		backgroundVC.addSubview(rightStack)
+
+		leftStack.edgeInsets = NSEdgeInsetsMake(0, 5, 0, 5)
+		backgroundVC.addSubview(leftStack)
 	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		components.forEach { component in
-			self.view.addSubview(component as! NSView)
+		backgroundVC.snp.makeConstraints { (make) -> Void in
+			make.top.left.right.equalToSuperview()
+			make.height.equalTo(22)
 		}
 
-		components.forEach { component in
-			component.layoutComponent()
+		leftStack.snp.makeConstraints { (make) -> Void in
+			make.top.left.right.equalToSuperview()
+		}
+
+		rightStack.snp.makeConstraints { (make) -> Void in
+			make.top.left.right.equalToSuperview()
+		}
+
+		rightComponents.reversed().forEach { component in
+			self.rightStack.addView(component as! NSView, in: .trailing)
+		}
+
+		leftComponents.forEach { component in
+			self.leftStack.addView(component as! NSView, in: .leading)
 		}
 	}
 }

@@ -47,13 +47,4 @@ end if
 		}
 		return ""
 	}
-
-	func layoutComponent() {
-		self.snp.makeConstraints { (make) -> Void in
-			make.top.equalTo(0)
-			make.right.equalTo(-205)
-		}
-	}
 }
-
-

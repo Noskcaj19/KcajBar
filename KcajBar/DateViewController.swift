@@ -34,11 +34,4 @@ class DateViewController : NSTextField, Component {
 		dateFormatter.dateFormat = "EEE dd MMM"
 		return dateFormatter.string(from: date)
 	}
-
-	func layoutComponent() {
-		self.snp.makeConstraints { (make) -> Void in
-			make.top.equalTo(0)
-			make.right.equalTo(-60)
-		}
-	}
 }
