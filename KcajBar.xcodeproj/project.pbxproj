@@ -23,6 +23,7 @@
 		04E1215A203E66C700BFAD2B /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E12159203E66C700BFAD2B /* SnapKit.framework */; };
 		04E1215B203E66C700BFAD2B /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04E12159203E66C700BFAD2B /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04E1215D203E711000BFAD2B /* BatteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E1215C203E711000BFAD2B /* BatteryViewController.swift */; };
+		04FE1AFA20410F1100F76DAC /* WindowNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FE1AF920410F1100F76DAC /* WindowNameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		04E12157203E63BA00BFAD2B /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
 		04E12159203E66C700BFAD2B /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/Mac/SnapKit.framework; sourceTree = "<group>"; };
 		04E1215C203E711000BFAD2B /* BatteryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryViewController.swift; sourceTree = "<group>"; };
+		04FE1AF920410F1100F76DAC /* WindowNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowNameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				04E1215C203E711000BFAD2B /* BatteryViewController.swift */,
 				040960102040BBCF009F3B67 /* WifiViewController.swift */,
 				040960142040C7FA009F3B67 /* SpotifyViewController.swift */,
+				04FE1AF920410F1100F76DAC /* WindowNameViewController.swift */,
 			);
 			path = KcajBar;
 			sourceTree = "<group>";
@@ -209,6 +212,11 @@
 					04ADB5F8203E25DE00F33847 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 					04ADB608203E25DE00F33847 = {
 						CreatedOnToolsVersion = 9.2;
@@ -265,6 +273,7 @@
 				04ADB61B203E262F00F33847 /* StatusBarViewController.swift in Sources */,
 				04E1215D203E711000BFAD2B /* BatteryViewController.swift in Sources */,
 				04E12154203E61EA00BFAD2B /* TimeViewController.swift in Sources */,
+				04FE1AFA20410F1100F76DAC /* WindowNameViewController.swift in Sources */,
 				0409600C2040B4FA009F3B67 /* Component.swift in Sources */,
 				040960132040C7C2009F3B67 /* Shell.swift in Sources */,
 				04ADB619203E260900F33847 /* main.swift in Sources */,

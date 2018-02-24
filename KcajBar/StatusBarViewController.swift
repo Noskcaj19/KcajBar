@@ -26,7 +26,7 @@ class StatusBarViewController : NSViewController {
 	]
 
 	var leftComponents: [Component] = [
-
+		WindowNameViewController()
 	]
 
 	init(with screen: NSScreen) {
