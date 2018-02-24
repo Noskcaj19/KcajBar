@@ -13,13 +13,13 @@ class SpotifyViewController : NSTextField, Component {
 		super.init(frame: frameRect)
 		self.stringValue = getSpotify()
 		self.font = NSFont(name: "Hack", size: 12)
-		self.textColor = NSColor(red: 0.52, green: 0.60, blue: 0.00, alpha: 1.0)
+		self.textColor = NSColor(red: 0.86, green: 0.20, blue: 0.18, alpha: 1.0)
 		self.backgroundColor = .clear
 		self.isBezeled = false
 		self.drawsBackground = false
 		self.isSelectable = false
 		self.isEditable = false
-		Timer.scheduledTimer(withTimeInterval: 45, repeats: true) { _ in
+		Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { _ in
 			self.stringValue = self.getSpotify()
 		}
 	}
