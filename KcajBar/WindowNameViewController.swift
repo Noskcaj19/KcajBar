@@ -22,6 +22,24 @@ class WindowNameViewController : NSTextField, Component {
 		Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
 			self.stringValue = self.getWindowName()
 		}
+
+		let events = [
+			NSWorkspace.activeSpaceDidChangeNotification,
+			NSWorkspace.sessionDidBecomeActiveNotification,
+			NSWorkspace.sessionDidResignActiveNotification
+		]
+
+		for event in events {
+			NSWorkspace.shared.notificationCenter.addObserver(
+				self,
+				selector: #selector(updateTitle),
+				name: event,
+				object: nil)
+		}
+	}
+
+	@objc func updateTitle() {
+		self.stringValue = self.getWindowName()
 	}
 
 	required init?(coder: NSCoder) {
