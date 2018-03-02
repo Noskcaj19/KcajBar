@@ -22,10 +22,17 @@ class SpotifyViewController : NSTextField, Component {
 		Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { _ in
 			self.stringValue = self.getSpotify()
 		}
+
+		let center = DistributedNotificationCenter.default()
+		center.addObserver(self, selector: #selector(handleSongChange), name: NSNotification.Name(rawValue: "com.spotify.client.PlaybackStateChanged"), object: nil)
 	}
 
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
+	}
+
+	@objc func handleSongChange() {
+		self.stringValue = self.getSpotify()
 	}
 
 	func getSpotify() -> String {
