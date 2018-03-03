@@ -32,7 +32,7 @@ class TimeViewController : NSTextField, Component {
 	func getTime() -> String {
 		let date = Date()
 		let calendar = Calendar.current
-		let hour = calendar.component(.hour, from: date)
+		let hour = calendar.component(.hour, from: date) % 12
 		let minute = calendar.component(.minute, from: date)
 		return "\(hour):\(String(format: "%02d", minute))"
 	}
