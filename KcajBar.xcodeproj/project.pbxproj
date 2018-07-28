@@ -415,7 +415,7 @@
 				CODE_SIGN_ENTITLEMENTS = KcajBar/KcajBar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = ZYYZRU8YFX;
+				DEVELOPMENT_TEAM = V287RUD37Y;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
@@ -436,7 +436,7 @@
 				CODE_SIGN_ENTITLEMENTS = KcajBar/KcajBar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = ZYYZRU8YFX;
+				DEVELOPMENT_TEAM = V287RUD37Y;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",

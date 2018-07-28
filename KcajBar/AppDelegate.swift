@@ -20,7 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 		newWindow?.backgroundColor = .clear
 		newWindow?.isOpaque = false
-//		newWindow?.level = .statusBar
+        newWindow?.level = NSWindow.Level(rawValue: -1)
 		newWindow?.collectionBehavior = [.transient, .canJoinAllSpaces, .ignoresCycle]
 		newWindow?.isRestorable = false
 		newWindow?.disableSnapshotRestoration()
