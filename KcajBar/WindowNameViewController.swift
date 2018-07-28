@@ -13,14 +13,14 @@ class WindowNameViewController : NSTextField, Component {
 		super.init(frame: frameRect)
 		self.stringValue = getWindowName()
 		self.font = NSFont(name: "Hack", size: 12)
-		self.textColor = NSColor(red: 0.51, green: 0.58, blue: 0.59, alpha: 1.0)
+		self.textColor = NSColor(red: 0.147, green: 0.571, blue: 0.525, alpha: 1.0)
 		self.backgroundColor = .clear
 		self.isBezeled = false
 		self.drawsBackground = false
 		self.isSelectable = false
 		self.isEditable = false
 		Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-			self.stringValue = self.getWindowName()
+			self.updateTitle()
 		}
 
 		let events = [
@@ -39,13 +39,35 @@ class WindowNameViewController : NSTextField, Component {
 	}
 
 	@objc func updateTitle() {
-		self.stringValue = self.getWindowName()
+        if let id = self.getDesktopNumber() {
+            self.stringValue = id + " " + self.getWindowName()
+        } else {
+            self.stringValue = self.getWindowName()
+        }
 	}
 
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 
+    func getDesktopNumber() -> String? {
+        let task = Process()
+        task.launchPath = "/usr/local/bin/chunkc"
+        task.arguments = ["tiling::query", "--desktop", "id"]
+        
+        let pipe = Pipe()
+        task.standardOutput = pipe
+        
+        task.launch()
+        
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        if let string = String(data: data, encoding: String.Encoding.utf8) {
+            return string
+        } else {
+            return nil
+        }
+    }
+    
 	func getWindowName() -> String {
 		let trackScript = """
 tell application "System Events"
