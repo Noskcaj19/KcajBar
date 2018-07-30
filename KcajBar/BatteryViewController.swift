@@ -17,13 +17,18 @@ struct BatteryInfo {
 let NORMAL_COLOR: NSColor = NSColor(red: 0.71, green: 0.54, blue: 0.00, alpha: 1.0)
 let CHARGING_COLOR: NSColor = NSColor(red: 0.52, green: 0.60, blue: 0.00, alpha: 1.0)
 
+func powerSourceChanged(context: UnsafeMutableRawPointer?) {
+    let opaque = Unmanaged<BatteryViewController>.fromOpaque(context!)
+    let _self = opaque.takeRetainedValue()
+    _self.updateStatus()
+}
+
 class BatteryViewController : NSTextField, Component {
 	override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
         self.usesSingleLineMode = true
         updateStatus()
 		self.font = NSFont(name: "Hack", size: 12)
-//        self.textColor = NORMAL_COLOR
 		self.backgroundColor = .clear
 		self.isBezeled = false
 		self.drawsBackground = false
@@ -32,6 +37,14 @@ class BatteryViewController : NSTextField, Component {
 		Timer.scheduledTimer(withTimeInterval: 60*2, repeats: true) { _ in
             self.updateStatus()
 		}
+        
+        let opaque = Unmanaged.passRetained(self).toOpaque()
+        let context = UnsafeMutableRawPointer(opaque)
+        let loop: CFRunLoopSource = IOPSNotificationCreateRunLoopSource(
+            powerSourceChanged,
+            context
+            ).takeRetainedValue() as CFRunLoopSource
+        CFRunLoopAddSource(CFRunLoopGetCurrent(), loop, CFRunLoopMode.defaultMode)
 	}
 
 	required init?(coder: NSCoder) {
