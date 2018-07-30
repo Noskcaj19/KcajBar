@@ -103,4 +103,9 @@ class StatusBarViewController : NSViewController {
 			self.leftStack.addView(component as! NSView, in: .leading)
 		}
 	}
+    
+    override func viewDidAppear() {
+        leftComponents.forEach { $0.viewDidAppear() }
+        rightComponents.forEach { $0.viewDidAppear() }
+    }
 }

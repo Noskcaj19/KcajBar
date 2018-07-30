@@ -8,4 +8,10 @@
 
 import Cocoa
 
-protocol Component {}
+protocol Component {
+    func viewDidAppear()
+}
+
+extension Component {
+    func viewDidAppear() { }
+}
