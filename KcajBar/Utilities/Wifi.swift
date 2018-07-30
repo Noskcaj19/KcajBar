@@ -14,9 +14,8 @@ enum WifiStatus {
 	case on(String)
 }
 
-private func getNetworkName() -> Optional<String> {
+private func getNetworkName() -> String? {
 	return CWWiFiClient.shared().interface()?.ssid()
-
 }
 
 func wifiStatus() -> WifiStatus {
