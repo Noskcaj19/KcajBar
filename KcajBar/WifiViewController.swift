@@ -41,10 +41,10 @@ class WifiViewController : NSTextField, Component {
     
     override func mouseExited(with event: NSEvent) {
         self.hovering = false
-        updateField()
+        Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(updateField), userInfo: nil, repeats: false)
     }
     
-    func updateField() {
+    @objc func updateField() {
         switch wifiStatus() {
         case let .on(networkName):
             if hovering {
