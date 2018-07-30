@@ -74,21 +74,7 @@ class WindowNameViewController : NSTextField, Component {
 	}
 
     func getDesktopNumber() -> String? {
-        let task = Process()
-        task.launchPath = "/usr/local/bin/chunkc"
-        task.arguments = ["tiling::query", "--desktop", "id"]
-        
-        let pipe = Pipe()
-        task.standardOutput = pipe
-        
-        task.launch()
-        
-        let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        if let string = String(data: data, encoding: String.Encoding.utf8) {
-            return string
-        } else {
-            return nil
-        }
+        return shell(launchPath: "/usr/local/bin/chunkc", arguments: ["tiling::query", "--desktop", "id"])
     }
     
 	func getWindowName() -> String {
