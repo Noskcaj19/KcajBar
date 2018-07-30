@@ -9,6 +9,9 @@
 import Cocoa
 
 class WindowNameViewController : NSTextField, Component {
+    var windowName: String = ""
+    var desktopNumber: String? = nil
+    
 	override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
         self.usesSingleLineMode = true
@@ -20,33 +23,52 @@ class WindowNameViewController : NSTextField, Component {
 		self.drawsBackground = false
 		self.isSelectable = false
 		self.isEditable = false
+        
 		Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-			self.updateTitle()
+			self.updateAll()
 		}
 
-		let events = [
-			NSWorkspace.activeSpaceDidChangeNotification,
+		let simple_events = [
 			NSWorkspace.sessionDidBecomeActiveNotification,
 			NSWorkspace.sessionDidResignActiveNotification
 		]
 
-		for event in events {
+		for event in simple_events {
 			NSWorkspace.shared.notificationCenter.addObserver(
 				self,
 				selector: #selector(updateTitle),
 				name: event,
 				object: nil)
 		}
+        
+        
+        NSWorkspace.shared.notificationCenter.addObserver(
+            self,
+            selector: #selector(updateAll),
+            name: NSWorkspace.activeSpaceDidChangeNotification,
+            object: nil)
+
 	}
 
 	@objc func updateTitle() {
-        if let id = self.getDesktopNumber() {
-            self.stringValue = id + " " + self.getWindowName()
-        } else {
-            self.stringValue = self.getWindowName()
-        }
+        windowName = getWindowName()
+        updateString()
 	}
+    
+    @objc func updateAll() {
+        windowName = getWindowName()
+        desktopNumber = getDesktopNumber()
+        updateString()
+    }
 
+    func updateString() {
+        if let desktopNum = desktopNumber {
+            self.stringValue = "\(desktopNum) \(windowName)"
+        } else {
+            self.stringValue = windowName
+        }
+    }
+    
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
