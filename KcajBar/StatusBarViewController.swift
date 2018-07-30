@@ -9,6 +9,13 @@
 import Cocoa
 import SnapKit
 
+enum BarPos {
+    case top
+    case bottom
+}
+
+let POSITION = BarPos.bottom
+
 class StatusBarViewController : NSViewController {
 	var screen: NSScreen
 
@@ -56,16 +63,36 @@ class StatusBarViewController : NSViewController {
 		super.viewDidLoad()
 
 		backgroundVC.snp.makeConstraints { (make) -> Void in
-			make.top.left.right.equalToSuperview()
-			make.height.equalTo(22)
+            if POSITION == .top {
+                make.top.left.right.equalToSuperview()
+                make.height.equalTo(22)
+            } else {
+                make.bottom.left.right.equalToSuperview()
+                make.height.equalTo(20)
+            }
 		}
 
 		leftStack.snp.makeConstraints { (make) -> Void in
-			make.top.left.right.equalToSuperview()
+            if POSITION == .top {
+                make.left.right.equalToSuperview()
+                make.top.equalToSuperview().offset(1)
+            } else {
+                make.bottom.left.right.equalToSuperview()
+                make.bottom.equalToSuperview().offset(-1)
+
+            }
 		}
 
 		rightStack.snp.makeConstraints { (make) -> Void in
-			make.top.left.right.equalToSuperview()
+            if POSITION == .top {
+                make.left.right.equalToSuperview()
+                make.top.equalToSuperview().offset(1)
+
+            } else {
+                make.left.right.equalToSuperview()
+                make.bottom.equalToSuperview().offset(-1)
+
+            }
 		}
 
 		rightComponents.reversed().forEach { component in

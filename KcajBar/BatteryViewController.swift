@@ -12,6 +12,7 @@ import IOKit.ps
 class BatteryViewController : NSTextField, Component {
 	override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
+        self.usesSingleLineMode = true
 		self.stringValue = getCapacity()
 		self.font = NSFont(name: "Hack", size: 12)
 		self.textColor = NSColor(red: 0.71, green: 0.54, blue: 0.00, alpha: 1.0)

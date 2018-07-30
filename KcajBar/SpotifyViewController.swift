@@ -11,6 +11,7 @@ import Cocoa
 class SpotifyViewController : NSTextField, Component {
 	override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
+        self.usesSingleLineMode = true
 		self.stringValue = getSpotify()
 		self.font = NSFont(name: "Hack", size: 12)
 		self.textColor = NSColor(red: 0.86, green: 0.20, blue: 0.18, alpha: 1.0)

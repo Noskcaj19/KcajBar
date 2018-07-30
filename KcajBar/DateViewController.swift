@@ -11,7 +11,8 @@ import Cocoa
 class DateViewController : NSTextField, Component {
 	override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
-		self.stringValue = getDate()
+        self.usesSingleLineMode = true
+        self.stringValue = getDate()
 		self.font = NSFont(name: "Hack", size: 12)
 		self.textColor = NSColor(red: 0.15, green: 0.55, blue: 0.82, alpha: 1.0)
 		self.backgroundColor = .clear

@@ -14,6 +14,7 @@ class TimeViewController : NSTextField, Component {
 	override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
 		self.dateFormatter.dateFormat = "hh:mm"
+        self.usesSingleLineMode = true
 		self.stringValue = getTime()
 		self.font = NSFont(name: "Hack", size: 12)
 		self.textColor = NSColor(red: 0.52, green: 0.60, blue: 0.00, alpha: 1.0)
