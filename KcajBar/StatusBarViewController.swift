@@ -14,7 +14,7 @@ enum BarPos {
     case bottom
 }
 
-let POSITION = BarPos.bottom
+let POSITION = BarPos.top
 
 class StatusBarViewController : NSViewController {
 	var screen: NSScreen
