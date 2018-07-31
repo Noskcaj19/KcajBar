@@ -19,7 +19,8 @@ let CHARGING_COLOR: NSColor = NSColor(red: 0.52, green: 0.60, blue: 0.00, alpha:
 
 func powerSourceChanged(context: UnsafeMutableRawPointer?) {
     let opaque = Unmanaged<BatteryViewController>.fromOpaque(context!)
-    let _self = opaque.takeRetainedValue()
+    // let _self = opaque.takeRetainedValue()
+    let _self = opaque.takeUnretainedValue()
     _self.updateStatus()
 }
 
@@ -38,11 +39,10 @@ class BatteryViewController : NSTextField, Component {
             self.updateStatus()
 		}
         
-        let opaque = Unmanaged.passRetained(self).toOpaque()
-        let context = UnsafeMutableRawPointer(opaque)
+        let opaque = Unmanaged.passUnretained(self).toOpaque()
         let loop: CFRunLoopSource = IOPSNotificationCreateRunLoopSource(
             powerSourceChanged,
-            context
+            opaque
             ).takeRetainedValue() as CFRunLoopSource
         CFRunLoopAddSource(CFRunLoopGetCurrent(), loop, CFRunLoopMode.defaultMode)
 	}
