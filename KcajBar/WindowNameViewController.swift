@@ -57,7 +57,12 @@ class WindowNameViewController : NSTextField, Component {
     
     @objc func updateAll() {
         windowName = getWindowName()
-        desktopNumber = getDesktopNumber()
+        DispatchQueue.global(qos: .background).async {
+            self.desktopNumber = self.getDesktopNumber()
+            DispatchQueue.main.async {
+                self.updateString()
+            }
+        }
         updateString()
     }
 
@@ -78,9 +83,9 @@ class WindowNameViewController : NSTextField, Component {
     }
     
 	func getWindowName() -> String {
-		let trackScript = """
+        let trackScript = """
 tell application "System Events"
-	set frontApp to name of first application process whose frontmost is true
+    return name of first application process whose frontmost is true
 end tell
 """
 		var error: NSDictionary?
