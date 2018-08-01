@@ -11,6 +11,7 @@ import Cocoa
 class WifiViewController : NSTextField, Component {
     var currentWifi: WifiStatus
     var hovering = false
+    var trackingArea: NSTrackingArea?
 	override init(frame frameRect: NSRect) {
         currentWifi = wifiStatus()
         super.init(frame: frameRect)
@@ -58,7 +59,16 @@ class WifiViewController : NSTextField, Component {
     }
 
     func viewDidAppear() {
-        let area = NSTrackingArea.init(rect: self.bounds, options: [NSTrackingArea.Options.mouseEnteredAndExited, NSTrackingArea.Options.activeAlways], owner: self, userInfo: nil)
-        self.addTrackingArea(area)
+        trackingArea = NSTrackingArea.init(rect: self.bounds, options: [NSTrackingArea.Options.mouseEnteredAndExited, NSTrackingArea.Options.activeAlways], owner: self, userInfo: nil)
+        self.addTrackingArea(trackingArea!)
+    }
+    
+    override func updateTrackingAreas() {
+        super.updateTrackingAreas()
+        if let area = trackingArea {
+            self.removeTrackingArea(area)
+        }
+        trackingArea = NSTrackingArea.init(rect: self.bounds, options: [NSTrackingArea.Options.mouseEnteredAndExited, NSTrackingArea.Options.activeAlways], owner: self, userInfo: nil)
+        self.addTrackingArea(trackingArea!)
     }
 }

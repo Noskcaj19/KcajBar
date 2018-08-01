@@ -10,6 +10,7 @@ import Cocoa
 
 class DateViewController : NSTextField, Component {
     var hovering = false
+    var trackingArea: NSTrackingArea?
 	override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
 		self.font = NSFont(name: "Hack", size: 12)
@@ -51,7 +52,16 @@ class DateViewController : NSTextField, Component {
     }
     
     func viewDidAppear() {
-        let area = NSTrackingArea.init(rect: self.bounds, options: [NSTrackingArea.Options.mouseEnteredAndExited, NSTrackingArea.Options.activeAlways], owner: self, userInfo: nil)
-        self.addTrackingArea(area)
+        trackingArea = NSTrackingArea.init(rect: self.bounds, options: [NSTrackingArea.Options.mouseEnteredAndExited, NSTrackingArea.Options.activeAlways], owner: self, userInfo: nil)
+        self.addTrackingArea(trackingArea!)
+    }
+    
+    override func updateTrackingAreas() {
+        super.updateTrackingAreas()
+        if let area = trackingArea {
+            self.removeTrackingArea(area)
+        }
+        trackingArea = NSTrackingArea.init(rect: self.bounds, options: [NSTrackingArea.Options.mouseEnteredAndExited, NSTrackingArea.Options.activeAlways], owner: self, userInfo: nil)
+        self.addTrackingArea(trackingArea!)
     }
 }

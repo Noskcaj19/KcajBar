@@ -12,6 +12,7 @@ class SpotifyViewController : NSTextField, Component {
     var songName: String?
     var artistName: String?
     var hovering = false
+    var trackingArea: NSTrackingArea?
 	override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
         (songName, artistName) = getSpotify()
@@ -79,7 +80,16 @@ end if
     }
     
     func viewDidAppear() {
-        let area = NSTrackingArea.init(rect: self.bounds, options: [NSTrackingArea.Options.mouseEnteredAndExited, NSTrackingArea.Options.activeAlways], owner: self, userInfo: nil)
-        self.addTrackingArea(area)
+        trackingArea = NSTrackingArea.init(rect: self.bounds, options: [NSTrackingArea.Options.mouseEnteredAndExited, NSTrackingArea.Options.activeAlways], owner: self, userInfo: nil)
+        self.addTrackingArea(trackingArea!)
+    }
+    
+    override func updateTrackingAreas() {
+        super.updateTrackingAreas()
+        if let area = trackingArea {
+            self.removeTrackingArea(area)
+        }
+        trackingArea = NSTrackingArea.init(rect: self.bounds, options: [NSTrackingArea.Options.mouseEnteredAndExited, NSTrackingArea.Options.activeAlways], owner: self, userInfo: nil)
+        self.addTrackingArea(trackingArea!)
     }
 }
