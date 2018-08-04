@@ -9,32 +9,32 @@
 import Cocoa
 
 class AppDelegate: NSObject, NSApplicationDelegate {
-	var newWindow: NSWindow?
-	var controller: StatusBarViewController?
+    var newWindow: NSWindow?
+    var controller: StatusBarViewController?
 
-	func applicationDidFinishLaunching(_ aNotification: Notification) {
-		guard let screen = NSScreen.main else {
-			return
-		}
-		newWindow = NSWindow(contentRect: screen.frame, styleMask: .borderless, backing: .buffered, defer: false)
+    func applicationDidFinishLaunching(_: Notification) {
+        guard let screen = NSScreen.main else {
+            return
+        }
+        newWindow = NSWindow(contentRect: screen.frame, styleMask: .borderless, backing: .buffered, defer: false)
 
-		newWindow?.backgroundColor = .clear
-		newWindow?.isOpaque = false
+        newWindow?.backgroundColor = .clear
+        newWindow?.isOpaque = false
         newWindow?.level = NSWindow.Level(rawValue: -1)
-		newWindow?.collectionBehavior = [.transient, .canJoinAllSpaces, .ignoresCycle]
-		newWindow?.isRestorable = false
-		newWindow?.disableSnapshotRestoration()
-		newWindow?.displaysWhenScreenProfileChanges = true
-		newWindow?.isReleasedWhenClosed = false
-		newWindow?.ignoresMouseEvents = true
+        newWindow?.collectionBehavior = [.transient, .canJoinAllSpaces, .ignoresCycle]
+        newWindow?.isRestorable = false
+        newWindow?.disableSnapshotRestoration()
+        newWindow?.displaysWhenScreenProfileChanges = true
+        newWindow?.isReleasedWhenClosed = false
+        newWindow?.ignoresMouseEvents = true
 
-		controller = StatusBarViewController(with: screen)
+        controller = StatusBarViewController(with: screen)
 
-		let content = newWindow!.contentView! as NSView
+        let content = newWindow!.contentView! as NSView
 
-		let view = controller!.view
-		content.addSubview(view)
+        let view = controller!.view
+        content.addSubview(view)
 
-		newWindow!.makeKeyAndOrderFront(nil)
-	}
+        newWindow!.makeKeyAndOrderFront(nil)
+    }
 }

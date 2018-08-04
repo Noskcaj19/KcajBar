@@ -9,15 +9,15 @@
 import Foundation
 
 func shell(launchPath: String, arguments: [String]) -> String {
-	let task = Process()
-	task.launchPath = launchPath
-	task.arguments = arguments
+    let task = Process()
+    task.launchPath = launchPath
+    task.arguments = arguments
 
-	let pipe = Pipe()
-	task.standardOutput = pipe
-	task.launch()
+    let pipe = Pipe()
+    task.standardOutput = pipe
+    task.launch()
 
-	let data = pipe.fileHandleForReading.readDataToEndOfFile()
-	let output = String(data: data, encoding: String.Encoding.utf8)!
-	return output.trimmingCharacters(in: .whitespacesAndNewlines)
+    let data = pipe.fileHandleForReading.readDataToEndOfFile()
+    let output = String(data: data, encoding: String.Encoding.utf8)!
+    return output.trimmingCharacters(in: .whitespacesAndNewlines)
 }

@@ -13,5 +13,5 @@ protocol Component {
 }
 
 extension Component {
-    func viewDidAppear() { }
+    func viewDidAppear() {}
 }

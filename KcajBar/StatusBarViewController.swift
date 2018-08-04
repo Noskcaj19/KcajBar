@@ -16,53 +16,53 @@ enum BarPos {
 
 let POSITION = BarPos.top
 
-class StatusBarViewController : NSViewController {
-	var screen: NSScreen
+class StatusBarViewController: NSViewController {
+    var screen: NSScreen
 
-	var backgroundVC = BackgroundViewController()
+    var backgroundVC = BackgroundViewController()
 
-	var leftStack = NSStackView()
-	var rightStack = NSStackView()
+    var leftStack = NSStackView()
+    var rightStack = NSStackView()
 
-	var rightComponents: [Component] = [
-		TimeViewController(),
-		DateViewController(),
-		BatteryViewController(),
-		WifiViewController(),
-		SpotifyViewController()
-	]
+    var rightComponents: [Component] = [
+        TimeViewController(),
+        DateViewController(),
+        BatteryViewController(),
+        WifiViewController(),
+        SpotifyViewController(),
+    ]
 
-	var leftComponents: [Component] = [
-		WindowNameViewController()
-	]
+    var leftComponents: [Component] = [
+        WindowNameViewController(),
+    ]
 
-	init(with screen: NSScreen) {
-		self.screen = screen
-		super.init(nibName: nil, bundle: nil)
-	}
+    init(with screen: NSScreen) {
+        self.screen = screen
+        super.init(nibName: nil, bundle: nil)
+    }
 
-	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
-	override func loadView() {
-		let view = NSView(frame: screen.frame)
-		view.wantsLayer = true
-		self.view = view
+    override func loadView() {
+        let view = NSView(frame: screen.frame)
+        view.wantsLayer = true
+        self.view = view
 
-		view.addSubview(backgroundVC)
+        view.addSubview(backgroundVC)
 
-		rightStack.edgeInsets = NSEdgeInsetsMake(0, 5, 0, 5)
-		backgroundVC.addSubview(rightStack)
+        rightStack.edgeInsets = NSEdgeInsetsMake(0, 5, 0, 5)
+        backgroundVC.addSubview(rightStack)
 
-		leftStack.edgeInsets = NSEdgeInsetsMake(0, 5, 0, 5)
-		backgroundVC.addSubview(leftStack)
-	}
+        leftStack.edgeInsets = NSEdgeInsetsMake(0, 5, 0, 5)
+        backgroundVC.addSubview(leftStack)
+    }
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-		backgroundVC.snp.makeConstraints { (make) -> Void in
+        backgroundVC.snp.makeConstraints { (make) -> Void in
             if POSITION == .top {
                 make.top.left.right.equalToSuperview()
                 make.height.equalTo(22)
@@ -70,20 +70,19 @@ class StatusBarViewController : NSViewController {
                 make.bottom.left.right.equalToSuperview()
                 make.height.equalTo(20)
             }
-		}
+        }
 
-		leftStack.snp.makeConstraints { (make) -> Void in
+        leftStack.snp.makeConstraints { (make) -> Void in
             if POSITION == .top {
                 make.left.right.equalToSuperview()
                 make.top.equalToSuperview().offset(1)
             } else {
                 make.bottom.left.right.equalToSuperview()
                 make.bottom.equalToSuperview().offset(-1)
-
             }
-		}
+        }
 
-		rightStack.snp.makeConstraints { (make) -> Void in
+        rightStack.snp.makeConstraints { (make) -> Void in
             if POSITION == .top {
                 make.left.right.equalToSuperview()
                 make.top.equalToSuperview().offset(1)
@@ -91,19 +90,18 @@ class StatusBarViewController : NSViewController {
             } else {
                 make.left.right.equalToSuperview()
                 make.bottom.equalToSuperview().offset(-1)
-
             }
-		}
+        }
 
-		rightComponents.reversed().forEach { component in
-			self.rightStack.addView(component as! NSView, in: .trailing)
-		}
+        rightComponents.reversed().forEach { component in
+            self.rightStack.addView(component as! NSView, in: .trailing)
+        }
 
-		leftComponents.forEach { component in
-			self.leftStack.addView(component as! NSView, in: .leading)
-		}
-	}
-    
+        leftComponents.forEach { component in
+            self.leftStack.addView(component as! NSView, in: .leading)
+        }
+    }
+
     override func viewDidAppear() {
         leftComponents.forEach { $0.viewDidAppear() }
         rightComponents.forEach { $0.viewDidAppear() }

@@ -24,56 +24,56 @@ func powerSourceChanged(context: UnsafeMutableRawPointer?) {
     _self.updateStatus()
 }
 
-class BatteryViewController : NSTextField, Component {
-	override init(frame frameRect: NSRect) {
-		super.init(frame: frameRect)
-        self.usesSingleLineMode = true
+class BatteryViewController: NSTextField, Component {
+    override init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        usesSingleLineMode = true
         updateStatus()
-		self.font = NSFont(name: "Hack", size: 12)
-		self.backgroundColor = .clear
-		self.isBezeled = false
-		self.drawsBackground = false
-		self.isSelectable = false
-		self.isEditable = false
-		Timer.scheduledTimer(withTimeInterval: 60*2, repeats: true) { _ in
+        font = NSFont(name: "Hack", size: 12)
+        backgroundColor = .clear
+        isBezeled = false
+        drawsBackground = false
+        isSelectable = false
+        isEditable = false
+        Timer.scheduledTimer(withTimeInterval: 60 * 2, repeats: true) { _ in
             self.updateStatus()
-		}
-        
+        }
+
         let opaque = Unmanaged.passUnretained(self).toOpaque()
         let loop: CFRunLoopSource = IOPSNotificationCreateRunLoopSource(
             powerSourceChanged,
             opaque
-            ).takeRetainedValue() as CFRunLoopSource
+        ).takeRetainedValue() as CFRunLoopSource
         CFRunLoopAddSource(CFRunLoopGetCurrent(), loop, CFRunLoopMode.defaultMode)
-	}
+    }
 
-	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-    
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     func updateStatus() {
         let status = getStatus()
-        
+
         if let perc = status.percent {
-            self.stringValue = String(perc) + "%"
+            stringValue = String(perc) + "%"
         } else {
-            self.stringValue = "ERR"
+            stringValue = "ERR"
         }
-        
+
         if status.charging {
-            self.textColor = CHARGING_COLOR
+            textColor = CHARGING_COLOR
         } else {
-            self.textColor = NORMAL_COLOR
+            textColor = NORMAL_COLOR
         }
     }
 
-	func getStatus() -> BatteryInfo {
-		let psInfo = IOPSCopyPowerSourcesInfo().takeRetainedValue()
-		let psInfoArray = (psInfo as! [[String: Any]])[0]
+    func getStatus() -> BatteryInfo {
+        let psInfo = IOPSCopyPowerSourcesInfo().takeRetainedValue()
+        let psInfoArray = (psInfo as! [[String: Any]])[0]
 
         return BatteryInfo(
             charging: psInfoArray["Power Source State"] as? String ?? "" == "AC Power",
             percent: psInfoArray["Current Capacity"] as? Int
         )
-	}
+    }
 }

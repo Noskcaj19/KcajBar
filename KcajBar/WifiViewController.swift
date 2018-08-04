@@ -8,67 +8,67 @@
 
 import Cocoa
 
-class WifiViewController : NSTextField, Component {
+class WifiViewController: NSTextField, Component {
     var currentWifi: WifiStatus
     var hovering = false
     var trackingArea: NSTrackingArea?
-	override init(frame frameRect: NSRect) {
+    override init(frame frameRect: NSRect) {
         currentWifi = wifiStatus()
         super.init(frame: frameRect)
-        
-        self.usesSingleLineMode = true
-		self.font = NSFont(name: "Hack", size: 12)
-		self.textColor = NSColor(red: 0.52, green: 0.60, blue: 0.00, alpha: 1.0)
-		self.backgroundColor = .clear
-		self.isBezeled = false
-		self.drawsBackground = false
-		self.isSelectable = false
-		self.isEditable = false
-		Timer.scheduledTimer(withTimeInterval: 60*2, repeats: true) { _ in
+
+        usesSingleLineMode = true
+        font = NSFont(name: "Hack", size: 12)
+        textColor = NSColor(red: 0.52, green: 0.60, blue: 0.00, alpha: 1.0)
+        backgroundColor = .clear
+        isBezeled = false
+        drawsBackground = false
+        isSelectable = false
+        isEditable = false
+        Timer.scheduledTimer(withTimeInterval: 60 * 2, repeats: true) { _ in
             self.currentWifi = wifiStatus()
             self.updateField()
-		}
-        updateField()
-	}
-
-	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-    
-    override func mouseEntered(with event: NSEvent) {
-        self.hovering = true
+        }
         updateField()
     }
-    
-    override func mouseExited(with event: NSEvent) {
-        self.hovering = false
+
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func mouseEntered(with _: NSEvent) {
+        hovering = true
+        updateField()
+    }
+
+    override func mouseExited(with _: NSEvent) {
+        hovering = false
         Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(updateField), userInfo: nil, repeats: false)
     }
-    
+
     @objc func updateField() {
         switch wifiStatus() {
         case let .on(networkName):
             if hovering {
-                self.stringValue = networkName
+                stringValue = networkName
             } else {
-                self.stringValue = "on"
+                stringValue = "on"
             }
         case .off:
-            self.stringValue = "off"
+            stringValue = "off"
         }
     }
 
     func viewDidAppear() {
-        trackingArea = NSTrackingArea.init(rect: self.bounds, options: [.mouseEnteredAndExited, .activeAlways, .assumeInside], owner: self, userInfo: nil)
-        self.addTrackingArea(trackingArea!)
+        trackingArea = NSTrackingArea(rect: bounds, options: [.mouseEnteredAndExited, .activeAlways, .assumeInside], owner: self, userInfo: nil)
+        addTrackingArea(trackingArea!)
     }
-    
+
     override func updateTrackingAreas() {
         super.updateTrackingAreas()
         if let area = trackingArea {
-            self.removeTrackingArea(area)
+            removeTrackingArea(area)
         }
-        trackingArea = NSTrackingArea.init(rect: self.bounds, options: [.mouseEnteredAndExited, .activeAlways, .assumeInside], owner: self, userInfo: nil)
-        self.addTrackingArea(trackingArea!)
+        trackingArea = NSTrackingArea(rect: bounds, options: [.mouseEnteredAndExited, .activeAlways, .assumeInside], owner: self, userInfo: nil)
+        addTrackingArea(trackingArea!)
     }
 }
