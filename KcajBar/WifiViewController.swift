@@ -59,7 +59,7 @@ class WifiViewController : NSTextField, Component {
     }
 
     func viewDidAppear() {
-        trackingArea = NSTrackingArea.init(rect: self.bounds, options: [NSTrackingArea.Options.mouseEnteredAndExited, NSTrackingArea.Options.activeAlways], owner: self, userInfo: nil)
+        trackingArea = NSTrackingArea.init(rect: self.bounds, options: [.mouseEnteredAndExited, .activeAlways, .assumeInside], owner: self, userInfo: nil)
         self.addTrackingArea(trackingArea!)
     }
     
@@ -68,7 +68,7 @@ class WifiViewController : NSTextField, Component {
         if let area = trackingArea {
             self.removeTrackingArea(area)
         }
-        trackingArea = NSTrackingArea.init(rect: self.bounds, options: [NSTrackingArea.Options.mouseEnteredAndExited, NSTrackingArea.Options.activeAlways], owner: self, userInfo: nil)
+        trackingArea = NSTrackingArea.init(rect: self.bounds, options: [.mouseEnteredAndExited, .activeAlways, .assumeInside], owner: self, userInfo: nil)
         self.addTrackingArea(trackingArea!)
     }
 }

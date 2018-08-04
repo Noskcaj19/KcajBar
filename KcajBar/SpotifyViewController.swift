@@ -15,7 +15,6 @@ class SpotifyViewController : NSTextField, Component {
     var trackingArea: NSTrackingArea?
 	override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
-        (songName, artistName) = getSpotify()
         self.usesSingleLineMode = true
 		self.font = NSFont(name: "Hack", size: 12)
 		self.textColor = NSColor(red: 0.86, green: 0.20, blue: 0.18, alpha: 1.0)
@@ -25,20 +24,25 @@ class SpotifyViewController : NSTextField, Component {
 		self.isSelectable = false
 		self.isEditable = false
 		Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { _ in
-            (self.songName, self.artistName) = self.getSpotify()
-            self.updateField()
+            self.updateAll()
  		}
-        updateField()
+        updateAll()
 
 		let center = DistributedNotificationCenter.default()
-		center.addObserver(self, selector: #selector(updateField), name: NSNotification.Name(rawValue: "com.spotify.client.PlaybackStateChanged"), object: nil)
+		center.addObserver(self, selector: #selector(updateAll), name: NSNotification.Name(rawValue: "com.spotify.client.PlaybackStateChanged"), object: nil)
 	}
 
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
     
+    @objc func updateAll() {
+        (songName, artistName) = getSpotify()
+        updateField()
+    }
+    
     @objc func updateField() {
+        (self.songName, self.artistName) = self.getSpotify()
         if hovering {
             self.stringValue = artistName ?? ""
         } else {
@@ -80,7 +84,7 @@ end if
     }
     
     func viewDidAppear() {
-        trackingArea = NSTrackingArea.init(rect: self.bounds, options: [NSTrackingArea.Options.mouseEnteredAndExited, NSTrackingArea.Options.activeAlways], owner: self, userInfo: nil)
+        trackingArea = NSTrackingArea.init(rect: self.bounds, options: [.mouseEnteredAndExited, .activeAlways, .assumeInside], owner: self, userInfo: nil)
         self.addTrackingArea(trackingArea!)
     }
     
@@ -89,7 +93,7 @@ end if
         if let area = trackingArea {
             self.removeTrackingArea(area)
         }
-        trackingArea = NSTrackingArea.init(rect: self.bounds, options: [NSTrackingArea.Options.mouseEnteredAndExited, NSTrackingArea.Options.activeAlways], owner: self, userInfo: nil)
+        trackingArea = NSTrackingArea.init(rect: self.bounds, options: [.mouseEnteredAndExited, .activeAlways, .assumeInside], owner: self, userInfo: nil)
         self.addTrackingArea(trackingArea!)
     }
 }
