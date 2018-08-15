@@ -35,16 +35,17 @@ class BatteryViewController: NSTextField, Component {
         drawsBackground = false
         isSelectable = false
         isEditable = false
-        Timer.scheduledTimer(withTimeInterval: 60 * 2, repeats: true) { _ in
+        Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { _ in
             self.updateStatus()
         }
 
-        let opaque = Unmanaged.passUnretained(self).toOpaque()
-        let loop: CFRunLoopSource = IOPSNotificationCreateRunLoopSource(
-            powerSourceChanged,
-            opaque
-        ).takeRetainedValue() as CFRunLoopSource
-        CFRunLoopAddSource(CFRunLoopGetCurrent(), loop, CFRunLoopMode.defaultMode)
+        // TODO: Why so much cpu?
+//        let opaque = Unmanaged.passUnretained(self).toOpaque()
+//        let loop: CFRunLoopSource = IOPSNotificationCreateRunLoopSource(
+//            powerSourceChanged,
+//            opaque
+//        ).takeRetainedValue() as CFRunLoopSource
+//        CFRunLoopAddSource(CFRunLoopGetCurrent(), loop, CFRunLoopMode.defaultMode)
     }
 
     required init?(coder _: NSCoder) {
