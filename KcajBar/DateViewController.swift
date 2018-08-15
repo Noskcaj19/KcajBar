@@ -37,7 +37,7 @@ class DateViewController: NSTextField, Component {
     func getDate(short: Bool) -> String {
         let date = Date()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = short ? "mm/dd/yy" : "EEE dd MMM"
+        dateFormatter.dateFormat = short ? "MM/dd/yy" : "EEE dd MMM"
         return dateFormatter.string(from: date)
     }
 
