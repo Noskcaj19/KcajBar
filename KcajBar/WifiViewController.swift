@@ -19,6 +19,7 @@ class WifiViewController: NSTextField, Component {
         usesSingleLineMode = true
         font = NSFont(name: "Hack", size: 12)
         textColor = NSColor(red: 0.52, green: 0.60, blue: 0.00, alpha: 1.0)
+        usesSingleLineMode = true
         backgroundColor = .clear
         isBezeled = false
         drawsBackground = false

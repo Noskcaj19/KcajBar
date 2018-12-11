@@ -30,6 +30,7 @@ class BatteryViewController: NSTextField, Component {
         usesSingleLineMode = true
         updateStatus()
         font = NSFont(name: "Hack", size: 12)
+        usesSingleLineMode = true
         backgroundColor = .clear
         isBezeled = false
         drawsBackground = false
